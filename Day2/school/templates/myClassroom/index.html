@@ -1,5 +1,20 @@
 {% extends 'base.html' %}
 
 {% block content %}
-  <p>My Classroom</p>
+  <h1>My Classroom</h1>
+  <p>Welcome to my classroom. Here you can find all the information about the students in my class.</p>
+  <h2>Subjects in our school</h2>
+  <br />
+  {% for sub in subjects %}
+    <h3>{{ sub.name }}</h3>
+    <p>{{ sub.description|slice:'50' }}</p>
+  {% endfor %}
+  <br />
+  <br />
+  <h2>Classrooms Areas</h2>
+  <br />
+  {% for classroom in classrooms %}
+    <h3>{{ classroom.name }}</h3>
+    <p>classroom area for {{ classroom.name }} equals to {{ classroom.area }} m2</p>
+  {% endfor %}
 {% endblock %}
