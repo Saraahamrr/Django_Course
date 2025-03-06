@@ -1,0 +1,89 @@
+{% extends 'base.html' %}
+{% load bootstrap5 %}
+{% bootstrap_css %}
+{% bootstrap_javascript %}
+
+{% block content %}
+  <h1>Form Classroom</h1>
+  <form method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+
+    <!-- Classroom Name -->
+    <div class="mb-3">
+      <label for="classroomName" class="form-label">Class Room Name</label>
+      <input type="text" class="form-control" id="classroomName" name="name" placeholder="Enter Classroom name" />
+    </div>
+
+    <!-- Subject -->
+    <div class="mb-3">
+      <label for="subject" class="form-label">Subject</label>
+      <select class="form-control" id="subject" name="subject">
+        {% for subject in subjects %}
+          <option value="{{ subject.name }}">{{ subject.name }}</option>
+        {% endfor %}
+      </select>
+      {% comment %} <input type="text" class="form-control mt-2" name="subject" placeholder="Or enter a custom subject" /> {% endcomment %}
+    </div>
+
+    <!-- Year -->
+    <div class="mb-3">
+      <label for="gradeLevel" class="form-label">Class Room Year</label>
+      <select class="form-control" id="gradeLevel" name="year">
+        <option value="1">grade_1</option>
+        <option value="2">grade_2</option>
+        <option value="3">grade_3</option>
+        <option value="4">grade_4</option>
+        <option value="5">grade_5</option>
+        <option value="6">grade_6</option>
+        <option value="7">grade_7</option>
+        <option value="8">grade_8</option>
+        <option value="9">grade_9</option>
+        <option value="10">grade_10</option>
+        <option value="11">grade_11</option>
+        <option value="12">grade_12</option>
+      </select>
+    </div>
+
+    <!-- Teacher -->
+    <div class="mb-3">
+      <label for="teacher" class="form-label">Home Teacher</label>
+      <select class="form-control" id="students" name="teacher">
+        {% for teacher in teachers %}
+          <option value="{{ teacher.name }}">{{ teacher.name }}</option>
+        {% endfor %}
+      </select>
+    </div>
+
+    <!-- Students -->
+    <div class="mb-3">
+      <label for="students" class="form-label">Students</label>
+      <select class="form-control" id="students" name="student">
+        {% for student in students %}
+          <option value="{{ student.name }}">{{ student.name }}</option>
+        {% endfor %}
+      </select>
+      {% comment %} <input type="text" class="form-control mt-2" name="student" placeholder="Or enter a custom student name" /> {% endcomment %}
+    </div>
+
+    <!-- School -->
+    <div class="mb-3">
+      <label for="schoolName" class="form-label">School Name</label>
+      <select class="form-control" id="schoolName" name="School">
+        {% for school in schools %}
+          <option value="{{ school.name }}">{{ school.name }}</option>
+        {% endfor %}
+      </select>
+      {% comment %} <input type="text" class="form-control mt-2" name="School" placeholder="Or enter a custom school name" /> {% endcomment %}
+    </div>
+
+    <!-- Area -->
+    <div class="mb-3">
+      <label for="area" class="form-label">Class Room Area</label>
+      <input type="number" class="form-control" name="area" step="any" placeholder="Enter area in square meters" />
+    </div>
+
+    <!-- Submit Button -->
+    <button type="submit" class="btn btn-primary">Submit</button>
+  </form>
+{% endblock %}

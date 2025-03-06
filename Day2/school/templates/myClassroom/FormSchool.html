@@ -1,0 +1,32 @@
+{% extends 'base.html' %}
+
+{% block content %}
+  <h1>Form School</h1>
+  <form method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <div class="mb-3">
+      <label for="classroomName" class="form-label">School Name</label>
+      <input type="text" class="form-control" name="name" placeholder="Enter Classroom name" />
+    </div>
+    <!-- Subject -->
+    <div class="mb-3">
+      <label for="subject" class="form-label">Address</label>
+      <input type="text" class="form-control" name="address" placeholder="Enter Classroom name" />
+    </div>
+    <!-- Area -->
+    <div class="mb-3">
+      <label for="area" class="form-label">School Area</label>
+      <input type="number" class="form-control" name="area" step="any" placeholder="Enter area in square meters" />
+    </div>
+    <div class="mb-3">
+      <label for="classroomName" class="form-label">Classroom Name</label>
+      <select class="form-control" id="schoolName" name="classrooom">
+        {% for classroom in classrooms %}
+          <option value="{{ classroom.name }}">{{ classroom.name }}</option>
+        {% endfor %}
+      </select>
+    </div>
+    <button type="submit" class="btn btn-primary">Submit</button>
+  </form>
+{% endblock %}
